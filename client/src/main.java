@@ -1,7 +1,8 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class main {
-    public static void main(String[] args) {//    Scanner etela = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {//    Scanner etela = new Scanner(System.in);
 //    String name = etela.nextLine();
 //    String family=etela.nextLine();
 //    String email = etela.nextLine();
