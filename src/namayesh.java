@@ -8,7 +8,7 @@
 //    PreparedStatement preparedStatement;
 //    namayesh() throws Exception{
 //        Class.forName("org.postgresql.Driver");
-//        connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=proj","postgres","kiarash23");
+//        connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=proj","postgres","Kamyab78");
 //    }
 //    public void getPersons() throws Exception{
 //        preparedStatement = connection.prepareStatement("select * from person");
@@ -18,12 +18,15 @@
 //        }
 //    }
 //
-//    public void getPerson(String username) throws Exception{
-//        preparedStatement = connection.prepareStatement("select * from person where username=?");
-//        preparedStatement.setString(1,username);
+//    public void getPerson(String name) throws Exception{
+//        preparedStatement = connection.prepareStatement("select * from person where name=?");
+//        preparedStatement.setString(1,name);
 //        ResultSet resultSet = preparedStatement.executeQuery();
 //        resultSet.next();
-//        System.out.println(resultSet.getString("pass"));
+//        System.out.println(resultSet.getString("name"));
+//        System.out.println(resultSet.getString("familyname"));
+//        System.out.println(resultSet.getString("username"));
+//
 //    }
 //
 //    public void addPerson(etelaat etelaat) throws Exception{
@@ -37,9 +40,12 @@
 //    }
 //
 //    public void editePerson(String newPass,String username) throws Exception{
-//        preparedStatement = connection.prepareStatement("update person set pass = ? where username=?");
-//        preparedStatement.setString(1,newPass);
-//        preparedStatement.setString(2,username);
+//        preparedStatement = connection.prepareStatement("update person values (default , ?,?,?,?,?)");
+//        preparedStatement.setString(1,new name);
+//        preparedStatement.setString(2,new familyname);
+//        preparedStatement.setString(3,new email);
+//        preparedStatement.setString(4,new uesr);
+//        preparedStatement.setString(5,new pass);
 //        preparedStatement.executeUpdate();
 //    }
 //

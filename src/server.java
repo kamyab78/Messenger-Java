@@ -7,41 +7,60 @@ import java.nio.Buffer;
 import java.util.Scanner;
 
 public class server extends Thread {
+    DataInputStream br;
+    Socket connection;
+    InputStream input;
+    DataOutputStream bw;
+    OutputStream output;
+    int portnumber = 9090;
+    ServerSocket server;
 
-
-    public server(){
+    public server() {
         try {
-            int portnumber = 9090;
-            ServerSocket server = new ServerSocket(portnumber);
+            while (true) {
+                ServerSocket server = new ServerSocket(portnumber);
+                Scanner scan = new Scanner(System.in);
+                connection = server.accept();
+                //*************************************************************
+                //khandan payam
+                input = connection.getInputStream();
+                br = new DataInputStream(input);
+                String n = br.readLine();
+                System.out.println(n);
 
-        while (true){
+           // input.close();
+            output.close();
+            //br.close();
+            bw.close();
+//            server.close();
+//            connection.close();
+                //   **************************************************************
+                //    ferestadan payam
+                String returnmasage = scan.nextLine();
+                output = connection.getOutputStream();
+                bw = new DataOutputStream(output);
+                bw.writeBytes(returnmasage);
+                //********************************************************************
+            input.close();
+//            output.close();
+            br.close();
+//            bw.close();
+      //      server.close();
+ //           connection.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                input.close();
+                output.close();
+                br.close();
+                bw.close();
+                server.close();
+                connection.close();
+            } catch (Exception e) {
 
-            Scanner scan = new Scanner(System.in);
-            Socket connection = server.accept();
-           InputStream input =connection.getInputStream();
-
-           InputStreamReader inputreader = new InputStreamReader(input);
-            BufferedReader br = new BufferedReader(inputreader);
-            String n = br.readLine();
-            System.out.println(n);
-            String returnmasage = scan.nextLine();
-            OutputStream output =new ObjectOutputStream (connection.getOutputStream());
-        OutputStreamWriter outputwriter = new OutputStreamWriter(output);
-            BufferedWriter bw = new BufferedWriter(outputwriter);
-            bw.write(returnmasage);
-            bw.flush();
+            }
         }
-        }
-        catch (Exception e) {
-       e.printStackTrace();
-        }
-//        finally {
-//            try {
-//                Socket.close();
-//            }
-//            catch (Exception e){
-//
-//            }
-//        }
     }
 }
