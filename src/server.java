@@ -1,132 +1,65 @@
-import com.sun.security.ntlm.Server;
-
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-//import java.io.IOException;
-//import java.io.ObjectOutputStream;
-//import java.io.InputStream;
-//import java.io.PrintStream;
-//import java.net.ServerSocket;
-//import java.net.Socket;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Scanner;
 public class server {
-    private int port = 9090;
-    private List<User> client;
-    private ServerSocket serverSocket;
-
-    public static void main(String[] args) throws IOException {
-        new server(9090).run();
-    }
-
-    public server(int port) {
-        this.port = port;
-        this.client = new ArrayList<User>();
-    }
-
-    public void run() throws IOException {
-        serverSocket = new ServerSocket(port){
-
-        protected void finalize() throws IOException {
-            this.close();
-        }
-        };
-
-        while (true) {
-            Socket socket = serverSocket.accept();
-            String name = (new Scanner(socket.getInputStream())).nextLine();
-            System.out.println(name + " ");
-            System.out.println( );
-            String familyname = (new Scanner(socket.getInputStream())).nextLine();
-            System.out.println(familyname + " ");
-            System.out.println( );
-            String email = (new Scanner(socket.getInputStream())).nextLine();
-            System.out.println(email+ " ");
-            System.out.println( );
-            String user = (new Scanner(socket.getInputStream())).nextLine();
-            System.out.println(user + " ");
-            System.out.println( );
-            String pass = (new Scanner(socket.getInputStream())).nextLine();
-            System.out.println(pass+ " ");
-            System.out.println( );
-            String payam = (new Scanner(socket.getInputStream())).nextLine();
-            System.out.println(payam + " ");
-            System.out.println( );
-            User newUser = new User(socket, name, familyname, email, user, pass);
-           client.add(newUser);
-//        newUser.getOutStream();
-        new Thread(new UserHandler(this, newUser)).start();
+    Socket socket;
+    public static void main(String[] args) throws Exception {
+        ServerSocket serverSocket = new ServerSocket(9090);
+        int counter = 0;
+        while (true){
+            Socket socket =serverSocket.accept();
+            if(counter == 0){
+                /***********************************************************/
+                /**gerefan eltelaat az client va add kardan**/
+                DataInputStream is = new DataInputStream(socket.getInputStream());
+                String name = is.readUTF();
+                //System.out.println(name);
+                String familyname = is.readUTF();
+                String email = is.readUTF();
+                String user = is.readUTF();
+                String pass = is.readUTF();
+                counter ++;
+                etelaa etelaa = new etelaa(name , familyname , email , user , pass);
+                add add = new add();
+                add.addPerson(etelaa);
+                /*****************************************************************/
+            }
+                new Thread(new chat(socket)).start();
         }
     }
-
-    class UserHandler extends Thread {
-        private server server;
-        private User user;
-
-        public UserHandler(server server, User user) {
-            this.server = server;
-            this.user = user;
-        }
-    }
-        class User {
-
-            private PrintStream streamOut;
-            private InputStream streamIn;
-            private String name;
-            private String familyname;
-            private String email;
-            private String user;
-            private String pass;
-            private Socket client;
-
-
-            public User(Socket client, String name, String familyname, String email, String user, String pass) throws IOException {
-                this.streamOut = new PrintStream(client.getOutputStream());
-                this.streamIn = client.getInputStream();
-                this.client = client;
-                this.name = name;
-                this.familyname = familyname;
-                this.email = email;
-                this.user = user;
-                this.pass = pass;
-            }
-
-            public PrintStream getStreamOut() {
-                return streamOut;
-            }
-
-            public InputStream getStreamIn() {
-                return streamIn;
-            }
-
-            public String getName() {
-                return name;
-            }
-
-            public String getFamilyname() {
-                return familyname;
-            }
-
-            public String getEmail() {
-                return email;
-            }
-
-            public String getUser() {
-                return user;
-            }
-
-            public String getPass() {
-                return pass;
-            }
+    static class chat implements Runnable{
+        Socket socket;
+        DataOutputStream dataOutputStream;
+        DataInputStream dataInputStream;
+        Scanner scanner;
+        chat(Socket socket ) throws IOException {
+            this.socket=socket;
+            dataInputStream=new DataInputStream(socket.getInputStream());
+            dataOutputStream = new DataOutputStream(socket.getOutputStream());
+            scanner=new Scanner(System.in);
         }
 
-    }
+        @Override
+        public void run() {
+            while (true){
+                try {
+                    String desicion = dataInputStream.readUTF();
+                    if (desicion.equals("1"))
+                        System.out.println(dataInputStream.readUTF());
 
+                    else {
+                        dataOutputStream.writeUTF("2");
+                        dataOutputStream.writeUTF(scanner.nextLine());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                }
+            }
+        }
+    }
+}
