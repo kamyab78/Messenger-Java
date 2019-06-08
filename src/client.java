@@ -1,60 +1,58 @@
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.Scanner;
-import java.io.StringReader;
+
 public class client {
-    private String host;
-    private int port;
-    Scanner scan = new Scanner(System.in);
     public static void main(String[] args) throws IOException {
-        new client ("127.0.0.1" , 9090).run();
-    }
-    public client(String host, int port) {
-        this.host = host;
-        this.port = port;
-    }
-    public void run() throws UnknownHostException, IOException{
-        Socket socket = new Socket(host,port);
-        System.out.println("connection is ok");
-        PrintStream out = new PrintStream(socket.getOutputStream());
+        Socket socket = new Socket("localhost" , 9090);
+        DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
+        DataOutputStream dataOutputStream=new DataOutputStream(socket.getOutputStream());
+        Scanner scan = new Scanner(System.in);
+        /**************************************************/
+        /**gereftan etelaat karbar**/
         System.out.print("enter name");
         String name = scan.nextLine();
-        out.print(name);
+        dataOutputStream.writeUTF(name);
+//        out.println(name);
         System.out.print("enter family name");
         String familyname = scan.nextLine();
-        out.print(familyname);
+        dataOutputStream.writeUTF(familyname);
+//        out.println(familyname);
         System.out.print("enter email");
         String email = scan.nextLine();
-        out.print(email);
+        dataOutputStream.writeUTF(email);
+//        out.println(email);
         System.out.print("enter user");
         String user = scan.nextLine();
-        out.print(user);
+        dataOutputStream.writeUTF(user);
+//        out.println(user);
         System.out.print("enter pass");
         String pass = scan.nextLine();
-        out.print(pass);
-        new Thread(new ReceivedMessagesHandler(socket.getInputStream())).start();
-        System.out.println("payam: ");
-        while (scan.hasNext()){
-            out.print(scan.nextLine());
-        }
-        scan.close();
-        out.close();
-        socket.close();
-    }
-    class ReceivedMessagesHandler extends  Thread {
-        private InputStream server;
+        dataOutputStream.writeUTF(pass);
+        /******************************************************/
 
-        public ReceivedMessagesHandler(InputStream server) {
-            this.server = server;
+        final String[] m = new String[1];
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                  //  m[0] =dataInputStream.readUTF();
+                   // if (m[0].equals("2"))
+                    System.out.println(dataInputStream.readUTF());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+        while (true){
+           // if (!m[0].equals("2")) {
+                dataOutputStream.writeUTF("1");
+                dataOutputStream.writeUTF(scan.nextLine());
+           // }
+
         }
-//        public void run() {
-//            Scanner m = new Scanner(server);
-//
-//        }
     }
+
 }
