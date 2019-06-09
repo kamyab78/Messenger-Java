@@ -33,26 +33,48 @@ public class client {
         dataOutputStream.writeUTF(pass);
         /******************************************************/
 
-        final String[] m = new String[1];
+       // final String[] m = new String[1];
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                  //  m[0] =dataInputStream.readUTF();
-                   // if (m[0].equals("2"))
-                    System.out.println(dataInputStream.readUTF());
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+                while (true){
+                    // if (!m[0].equals("2")) {
+                    // dataOutputStream.writeUTF("1");
+                    try {
+                        dataOutputStream.writeUTF(scan.nextLine());
+//                        System.out.println(dataInputStream.readUTF());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+//                try {
+//                  //  m[0] =dataInputStream.readUTF();
+//                   // if (m[0].equals("2"))
+////                    System.out.println(dataInputStream.readUTF());
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                while (true){
+                    try {
+//                        dataOutputStream.writeUTF(scan.nextLine());
+                        System.out.println(dataInputStream.readUTF());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }
         }).start();
-        while (true){
-           // if (!m[0].equals("2")) {
-                dataOutputStream.writeUTF("1");
-                dataOutputStream.writeUTF(scan.nextLine());
-           // }
 
-        }
     }
 
 }
