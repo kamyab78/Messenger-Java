@@ -8,7 +8,7 @@ public class add {
     PreparedStatement preparedStatement;
     add() throws Exception{
         Class.forName("org.postgresql.Driver");
-        connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=proj","postgres","Kamyab78");
+        connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=massanger","postgres","Kamyab78");
     }
     public void getPersons() throws Exception{
         preparedStatement = connection.prepareStatement("select * from person");
@@ -19,13 +19,15 @@ public class add {
     }
 
     public void getPerson(String name) throws Exception{
-        preparedStatement = connection.prepareStatement("select * from person where name=?");
+        preparedStatement = connection.prepareStatement("select * from person where username=?");
         preparedStatement.setString(1,name);
         ResultSet resultSet = preparedStatement.executeQuery();
         resultSet.next();
         System.out.println(resultSet.getString("name"));
         System.out.println(resultSet.getString("familyname"));
+        System.out.println(resultSet.getString("email"));
         System.out.println(resultSet.getString("username"));
+        System.out.println(resultSet.getString("pass"));
 
     }
 
@@ -40,7 +42,7 @@ public class add {
     }
 
     public void editePerson(String newname,String newfamilyname , String newemail , String newuser , String newpass) throws Exception{
-        preparedStatement = connection.prepareStatement("update person values (default , ?,?,?,?,?)");
+        preparedStatement = connection.prepareStatement("update person values (default , ?,?,?,?,?) where username=?");
         preparedStatement.setString(1,newname);
         preparedStatement.setString(2,newfamilyname);
         preparedStatement.setString(3,newemail);
