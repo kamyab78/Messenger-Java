@@ -26,7 +26,8 @@ public class client {
 //        out.println(email);
         System.out.print("enter user");
         String user = scan.nextLine();
-        dataOutputStream.writeUTF(user);
+       // dataOutputStream.writeUTF(name+":"+user);
+        //"ali:salama halet chetrore"
 //        out.println(user);
         System.out.print("enter pass");
         String pass = scan.nextLine();
