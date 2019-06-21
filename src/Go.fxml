@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GoTo">
+   <children>
+      <TextField fx:id="txtfoutput" layoutX="110.0" layoutY="706.0" prefHeight="51.0" prefWidth="460.0" />
+      <Button fx:id="btnsend" layoutX="582.0" layoutY="706.0" mnemonicParsing="false" text="send" />
+      <Button fx:id="btnexit" layoutX="642.0" layoutY="14.0" mnemonicParsing="false" text="X" />
+      <Button fx:id="btninformation" layoutX="100.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="528.0" text="information" />
+      <AnchorPane layoutX="100.0" layoutY="85.0" prefHeight="577.0" prefWidth="528.0">
+         <children>
+            <TextArea layoutY="384.0" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea layoutX="306.0" layoutY="392.0" prefHeight="185.0" prefWidth="200.0" />
+         </children>
+      </AnchorPane>
+      <ScrollBar layoutX="652.0" layoutY="85.0" orientation="VERTICAL" prefHeight="584.0" prefWidth="28.0" />
+   </children>
+</AnchorPane>

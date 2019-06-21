@@ -1,48 +1,105 @@
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
+import static javafx.scene.paint.Color.rgb;
 
-public class server {
+public class server extends Application {
+    public static ArrayList<String>etelaat = new ArrayList<>();
+    public static ArrayList<BufferedImage>aks = new ArrayList<>();
+    static Stage stage;
+    @Override
+    public void start(Stage Stage) throws Exception {
+        /***********************************************************************************************/
+        /**sakhtan safe**/
+        stage = Stage;
+        Parent root = FXMLLoader.load(getClass().getResource("controll.fxml"));
+        Stage.setScene(new Scene(root, 600, 600));
+        Stage.setTitle("Messanger");
+        /***********************************************************************************************/
+        Stage.show();
+
+    }
     Socket socket;
     public static void main(String[] args) throws Exception {
+        launch();
         ServerSocket serverSocket = new ServerSocket(9090);
+        Date date = new Date();
+        String oi = date.toString();
+        String l = "";
         int counter = 0;
-        Socket socket=serverSocket.accept();;
-        DataOutputStream dataOutputStream= new DataOutputStream(socket.getOutputStream());
-        DataInputStream dataInputStream= new DataInputStream(socket.getInputStream());
-        Scanner scanner =new Scanner(System.in);
+        int c =0;
+        Socket socket = serverSocket.accept();
+        DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
+        Scanner scanner = new Scanner(System.in);
 
-        if(counter == 0){
+        /********************************************************************************************/
+        /**etelaat nafar dovom ke hamon server hast**/
+        if(c==0) {
+
+            String Name = Controller.etelagir.get(0);
+            String Familyname = Controller.etelagir.get(1);
+            String Email = Controller.etelagir.get(2);
+            String Username = Controller.etelagir.get(3);
+            String Pass = Controller.etelagir.get(4);
+            String Photo = Controller.aks.get(0);
+//            String Photo = Controller.etelagir.get(5);
+//            File file = new File(Photo);
+//            BufferedImage image = null;
+//            image = ImageIO.read(file);
+            etela etela = new etela(Name, Familyname, Email, Username, Pass , Photo);
+            add ad = new add();
+            ad.addpersonofserver(etela);
+            c++;
+        }
+        if (counter == 0) {
             /***********************************************************/
             /**gerefan eltelaat az client va add kardan**/
             DataInputStream is = new DataInputStream(socket.getInputStream());
             String name = is.readUTF();
-            //System.out.println(name);
             String familyname = is.readUTF();
             String email = is.readUTF();
             String user = is.readUTF();
             String pass = is.readUTF();
-            counter ++;
-            etelaa etelaa = new etelaa(name , familyname , email , user , pass);
-
+            String photo = is.readUTF();
+            counter++;
+            etelaa etelaa = new etelaa(name, familyname, email, user, pass , photo);
+            l = etelaa.getUser();
             add add = new add();
             add.addPerson(etelaa);
             /*****************************************************************/
         }
+        add s = new add();
+        s.getPerson(l);
+        final String finalL = l;
 
+        if(GoTo.x==1){
+            add add2 = new add();
+            add2.getPerson(l);
+        }
         new Thread(new Runnable() {
             @Override
             public void run() {
 
-                while (true){
+                while (true) {
                     try {
-//                        dataOutputStream.writeUTF(scan.nextLine());
-                        System.out.println(dataInputStream.readUTF());
+                        String str = dataInputStream.readUTF();
+                        System.out.println(str);
                         Addpayam addpayam = new Addpayam();
-                        addpayam.addp(dataInputStream);
+                        addpayam.addp(finalL, str, oi);
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (Exception e) {
@@ -57,19 +114,19 @@ public class server {
             @Override
             public void run() {
 
-                while (true){
+                while (true) {
                     try {
-//                        dataOutputStream.writeUTF(scan.nextLine());
-                        dataOutputStream.writeUTF(scanner.nextLine());
-
+                        dataOutputStream.writeUTF(GoTo.bn);
+                        Addpayam addpaya = new Addpayam();
+                        addpaya.addp(finalL, GoTo.bn, oi);
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
                 }
             }
         }).start();
-//            Socket socket =serverSocket.accept();
-
     }
 }

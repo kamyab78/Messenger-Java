@@ -1,11 +1,12 @@
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,7 +14,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    public static ArrayList<String>etelaat = new ArrayList<>();
+    public static ArrayList<String> etelagir = new ArrayList<>();
+    public static ArrayList<String> aks = new ArrayList<>();
     @FXML
     TextField txtfUserName;
     @FXML
@@ -26,36 +28,49 @@ public class Controller implements Initializable {
     TextField txtfPass;
     @FXML
     Button btnGoTo;
-    @FXML TextField txtfphoto;
-//    public List<String> strings;
+    @FXML
+    TextField txtfphoto;
+    @FXML
+    Text txt;
+    @FXML
+    Button btntest;
+    List<String> strings;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        btnGoTo.setOnAction(event -> {
-            String name;
-            name = txtfName.getText();
-            etelaat.add(name);
-            String familyname;
-            familyname = txtfFamilyname.getText();
-            etelaat.add(familyname);
-            String email;
-            email = txtfEmail.getText();
-            etelaat.add(email);
-            String username;
-            username = txtfEmail.getText();
-            etelaat.add(username);
-            String pass;
-            pass = txtfPass.getText();
-            etelaat.add(pass);
+        btntest.setOnAction(event -> {
             String photo;
             photo = txtfphoto.getText();
-            etelaat.add(photo);
+            aks.add(photo);
+            File file = new File(photo);
+            if (!(file.exists())) {
+                txt.setText("File not exists");
+            } else
+                txt.setText("ok");
+        });
+        btnGoTo.setOnAction(event -> {
             try {
-                client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("GoTo.fxml"))));
+                String name;
+                name = txtfName.getText();
+                etelagir.add(name);
+                String familyname;
+                familyname = txtfFamilyname.getText();
+                etelagir.add(familyname);
+                String email;
+                email = txtfEmail.getText();
+                etelagir.add(email);
+                String username;
+                username = txtfUserName.getText();
+                etelagir.add(username);
+                String pass;
+                pass = txtfPass.getText();
+                etelagir.add(pass);
+
+                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            client.stage.show();
+            server.stage.show();
         });
     }
 }

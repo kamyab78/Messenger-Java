@@ -1,8 +1,4 @@
-import java.io.DataInputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class Addpayam {
     Connection connection;
@@ -33,15 +29,20 @@ public class Addpayam {
     }
 
 
-    public void addp(DataInputStream dataInputStream) throws Exception {
-        preparedStatement = connection.prepareStatement("insert into payam values (default ,?)");
-        preparedStatement.setString(1, String.valueOf(dataInputStream));
+    public void addp(String user, String payam, String date) throws Exception {
+        preparedStatement = connection.prepareStatement("insert into payam values (default ,?,?,? )");
+       // preparedStatement.setString(1,);
+        preparedStatement.setString(1,user);
+        preparedStatement.setString(2, payam);
+       preparedStatement.setString(3, date);
+
 //        preparedStatement.setString(2,etelaa.getFamilyname());
 //        preparedStatement.setString(3,etelaa.getEmail());
 //        preparedStatement.setString(4,etelaa.getUser());
 //        preparedStatement.setString(5 , etelaa.getPass());
         preparedStatement.executeUpdate();
     }
+
 public void close() throws Exception{
         preparedStatement.close();
         connection.close();
