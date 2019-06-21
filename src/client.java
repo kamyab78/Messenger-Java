@@ -1,11 +1,28 @@
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class client {
-    public static void main(String[] args) throws IOException {
+public class client extends Application {
+    static Stage stage;
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
+        Parent root = FXMLLoader.load(getClass().getResource("controll.fxml"));
+        primaryStage.setScene(new Scene(root, 700, 800));
+        primaryStage.setTitle("Messanger");
+        primaryStage.show();
+    }
+        public static void main(String[] args) throws IOException {
+        launch(args);
         Socket socket = new Socket("localhost" , 9090);
         DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
         DataOutputStream dataOutputStream=new DataOutputStream(socket.getOutputStream());
@@ -13,50 +30,32 @@ public class client {
         /**************************************************/
         /**gereftan etelaat karbar**/
         System.out.print("enter name");
-        String name = scan.nextLine();
-        dataOutputStream.writeUTF(name);
-//        out.println(name);
+        dataOutputStream.writeUTF(Controller.etelaat.get(0));
         System.out.print("enter family name");
-        String familyname = scan.nextLine();
-        dataOutputStream.writeUTF(familyname);
-//        out.println(familyname);
+        dataOutputStream.writeUTF(Controller.etelaat.get(1));
         System.out.print("enter email");
-        String email = scan.nextLine();
-        dataOutputStream.writeUTF(email);
-//        out.println(email);
+        dataOutputStream.writeUTF(Controller.etelaat.get(2));
         System.out.print("enter user");
-        String user = scan.nextLine();
-       // dataOutputStream.writeUTF(name+":"+user);
-        //"ali:salama halet chetrore"
-//        out.println(user);
+            dataOutputStream.writeUTF(Controller.etelaat.get(3));
         System.out.print("enter pass");
-        String pass = scan.nextLine();
-        dataOutputStream.writeUTF(pass);
+            dataOutputStream.writeUTF(Controller.etelaat.get(4));
+            System.out.println("enter your directory of photo");
+dataOutputStream.writeUTF(Controller.etelaat.get(5));
+        List list = new ArrayList<>();
         /******************************************************/
-
-       // final String[] m = new String[1];
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 while (true){
-                    // if (!m[0].equals("2")) {
-                    // dataOutputStream.writeUTF("1");
                     try {
-                        dataOutputStream.writeUTF(scan.nextLine());
+                        dataOutputStream.writeUTF(conection.z);
 //                        System.out.println(dataInputStream.readUTF());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
 
                 }
-//                try {
-//                  //  m[0] =dataInputStream.readUTF();
-//                   // if (m[0].equals("2"))
-////                    System.out.println(dataInputStream.readUTF());
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
             }
         }).start();
 
@@ -66,16 +65,13 @@ public class client {
 
                 while (true){
                     try {
-//                        dataOutputStream.writeUTF(scan.nextLine());
                         System.out.println(dataInputStream.readUTF());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
         }).start();
 
     }
-
 }

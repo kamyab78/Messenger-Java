@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <TextField fx:id="txtfName" layoutX="251.0" layoutY="64.0" />
+      <Text fx:id="txtName" layoutX="45.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name " wrappingWidth="182.953125" />
+      <TextField fx:id="txtfFamilyname" layoutX="251.0" layoutY="169.0" />
+      <Button fx:id="btnGoTo" layoutX="356.0" layoutY="675.0" mnemonicParsing="false" text="go to" />
+      <TextField fx:id="txtfEmail" layoutX="251.0" layoutY="263.0" />
+      <TextField fx:id="txtfUserName" layoutX="251.0" layoutY="361.0" />
+      <TextField fx:id="txtfPass" layoutX="251.0" layoutY="454.0" />
+      <Text fx:id="txtFamilyName" layoutX="49.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FamilyName" wrappingWidth="146.2734375" />
+      <Text fx:id="txtEmail" layoutX="49.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="174.2734375" />
+      <Text fx:id="txtUsername" layoutX="45.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName" wrappingWidth="182.953125" />
+      <Text fx:id="txtPass" layoutX="60.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pass" />
+      <Text layoutX="61.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <TextField fx:id="txtfphoto" layoutX="243.0" layoutY="546.0" />
+   </children>
+</AnchorPane>
