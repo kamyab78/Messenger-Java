@@ -1,10 +1,13 @@
+import com.sun.glass.ui.CommonDialogs;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,39 +35,53 @@ public class Controller implements Initializable {
     TextField txtfphoto;
     @FXML
     Text txt;
-    @FXML
-    Button btntest;
+    @FXML Button btnsubmit;
+    @FXML Text txts;
+    @FXML Button btnphoto;
     List<String> strings;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        btntest.setOnAction(event -> {
-            String photo;
-            photo = txtfphoto.getText();
-            aks.add(photo);
-            File file = new File(photo);
-            if (!(file.exists())) {
-                txt.setText("File not exists");
-            } else
-                txt.setText("ok");
+ btnphoto.setOnAction(event -> {
+FileChooser fc = new FileChooser();
+//fc.getExtensionFilters().add(new CommonDialogs.ExtensionFilter("*jpg"));
+//     String photo = fc.
+     File selectedFile = fc.showOpenDialog(null);
+             if (selectedFile != null) {
+                 String photo = selectedFile.getPath();
+                 aks.add(photo);
+             }
+
+ });
+        btnsubmit.setOnAction(event -> {
+            String name;
+            name = txtfName.getText();
+            etelagir.add(name);
+            String familyname;
+            familyname = txtfFamilyname.getText();
+            etelagir.add(familyname);
+            String email;
+            email = txtfEmail.getText();
+            etelagir.add(email);
+            String username;
+            username = txtfUserName.getText();
+            etelagir.add(username);
+            String pass;
+            pass = txtfPass.getText();
+            etelagir.add(pass);
+            String Photo;
+            Photo = null;
+            txts.setText("your submit is ok;Lets Go");
+            etela etela = new etela(name , familyname , email , username , pass , aks.get(0));
+            try {
+                add a = new add();
+                a.addpersonofserver(etela);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
         btnGoTo.setOnAction(event -> {
             try {
-                String name;
-                name = txtfName.getText();
-                etelagir.add(name);
-                String familyname;
-                familyname = txtfFamilyname.getText();
-                etelagir.add(familyname);
-                String email;
-                email = txtfEmail.getText();
-                etelagir.add(email);
-                String username;
-                username = txtfUserName.getText();
-                etelagir.add(username);
-                String pass;
-                pass = txtfPass.getText();
-                etelagir.add(pass);
 
                 server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));
             } catch (IOException e) {
@@ -73,4 +90,8 @@ public class Controller implements Initializable {
             server.stage.show();
         });
     }
+//
+//    public void chooseImage(MouseEvent mouseEvent) {
+//        FileChooser chooser =
+//    }
 }

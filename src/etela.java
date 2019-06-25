@@ -27,6 +27,4 @@ private String photo;
         this.photo = photo;
     }
 
-    public etela() {
-    }
 }

@@ -5,10 +5,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -39,21 +41,13 @@ public class Etelaat implements Initializable {
                 txtfamily.setText(add.getPerson(Search.username).get(1));
                 txtemail.setText(add.getPerson(Search.username).get(2));
                 txtuser.setText(add.getPerson(Search.username).get(3));
-                String photo = add.getPerson(Search.username).get(4);
+
+//                Pane pane = null;
+//                pane.getChildren().add(imageView);
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-//            File file = new File(photo);
-//            BufferedImage image = null;
-//            try {
-//                image = ImageIO.read(file);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            img.setImage(new Image(photo));
-//            img.
-//            img.getImage();
         });
 //
 //        text.setText("a");

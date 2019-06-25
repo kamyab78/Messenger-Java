@@ -20,7 +20,7 @@
       <Text fx:id="txtemail" layoutX="200.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="270.2734375" />
       <Text fx:id="txtuser" layoutX="200.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="347.2734375" />
       <Button fx:id="btnshow" layoutX="408.0" layoutY="94.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="93.0" text="show" />
-      <Text layoutX="25.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="photo" />
+
       <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
