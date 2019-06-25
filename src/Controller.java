@@ -42,17 +42,17 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
- btnphoto.setOnAction(event -> {
-FileChooser fc = new FileChooser();
+        btnphoto.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
 //fc.getExtensionFilters().add(new CommonDialogs.ExtensionFilter("*jpg"));
 //     String photo = fc.
-     File selectedFile = fc.showOpenDialog(null);
-             if (selectedFile != null) {
-                 String photo = selectedFile.getPath();
-                 aks.add(photo);
-             }
+            File selectedFile = fc.showOpenDialog(null);
+            if (selectedFile != null) {
+                String photo = selectedFile.getPath();
+                aks.add(photo);
+            }
 
- });
+        });
         btnsubmit.setOnAction(event -> {
             String name;
             name = txtfName.getText();
@@ -69,25 +69,26 @@ FileChooser fc = new FileChooser();
             String pass;
             pass = txtfPass.getText();
             etelagir.add(pass);
-            String Photo;
-            Photo = null;
             txts.setText("your submit is ok;Lets Go");
-            etela etela = new etela(name , familyname , email , username , pass , aks.get(0));
             try {
-                add a = new add();
-                a.addpersonofserver(etela);
-            } catch (Exception e) {
+                client.dataOutputStream.writeUTF(etelagir.get(0));
+                client.dataOutputStream.writeUTF(etelagir.get(1));
+                client.dataOutputStream.writeUTF(etelagir.get(2));
+                client.dataOutputStream.writeUTF(etelagir.get(3));
+                client.dataOutputStream.writeUTF(etelagir.get(4));
+                client.dataOutputStream.writeUTF(aks.get(0));
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });
         btnGoTo.setOnAction(event -> {
             try {
 
-                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));
+                client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("GoTo.fxml"))));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            server.stage.show();
+            client.stage.show();
         });
     }
 //
