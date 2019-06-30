@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -30,68 +29,72 @@ public class ChatController implements Initializable {
     @FXML
     TextArea chat;
     String txt ="";
-
-
-
+    int z=0;
+    int counter=0;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        chat.setEditable(false);
-//        try {
-//            add add = new add();
-//            String photo = add.getPerson(Search.username).get(4);
-//            Image image = new Image(new FileInputStream(photo));
-//            ImageView imageView = new ImageView(image);
-//            imageView.setFitHeight(60);
-//            imageView.setFitWidth(60);
-//            btninformation.setGraphic(imageView);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-        btnsend.setOnAction(event -> {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
 
-                            while (true){
-                                try {
-                                    txt += txtfoutput.getText() + "\n\n";
-                                    client.dataOutputStream.writeUTF(txt);
-                                    chat.setText(txt);
+        chat.setEditable(false);
+        try {
+
+            String photo = Search.information.get(4);
+            Image image = new Image(new FileInputStream(photo));
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(60);
+            imageView.setFitWidth(60);
+            btninformation.setGraphic(imageView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+                    new Thread(() -> {
+
+                        while (true){
+                            btnsend.setOnAction(event -> {
+                            try {
+                                txt += txtfoutput.getText() + "\n\n";
+                                client.dataOutputStream.writeUTF(txt);
+//                                if (z==0) {
+                                String client = Controller.etelagir.get(3);
+                                    chat.setText(client + ":" + txt);
                                     txtfoutput.setText("");
+//                                    z++;
+//                                }
+//                                    z=0;
 //                                    txtfoutput.requestFocus();
 //                        System.out.println(dataInputStream.readUTF());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
+                            });
                         }
                     }).start();
-                }
-        );
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
 
-                while (true){
-                    try {
-                        String input =client.dataInputStream.readUTF();
-                        chat.setText(input);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+
+        new Thread(() -> {
+            while (true){
+                try {
+                    String input =client.dataInputStream.readUTF();
+//                    if (counter==0) {
+                        chat.setText(Search.username + ":" + input);
+//                        counter++;
+//                    }
+//                        counter=0;
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }).start();
         btnexit.setOnAction(event -> {
             System.exit(0);
         });
-//        btninformation.setOnAction(event -> {
-//            int x=1;
-//            try {
-//                client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("etelaat.fxml"))));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        });
+        btninformation.setOnAction(event -> {
+            int x=1;
+            try {
+                client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("etelaat.fxml"))));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

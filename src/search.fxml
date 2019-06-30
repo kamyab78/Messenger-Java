@@ -15,5 +15,6 @@
         <Button fx:id="btnsearch" layoutX="131.0" layoutY="165.0" mnemonicParsing="false" text="search" />
         <Button fx:id="btnnext" layoutX="251.0" layoutY="249.0" mnemonicParsing="false" text="next" />
         <Text fx:id="txt" layoutX="24.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="298.0" />
+      <Button fx:id="btninfor" layoutX="227.0" layoutY="165.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" />
     </children>
 </AnchorPane>

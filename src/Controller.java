@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -39,7 +40,7 @@ public class Controller implements Initializable {
     @FXML Text txts;
     @FXML Button btnphoto;
     List<String> strings;
-
+    String username;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnphoto.setOnAction(event -> {
@@ -82,9 +83,15 @@ public class Controller implements Initializable {
             }
         });
         btnGoTo.setOnAction(event -> {
+//            try {
+//                DataInputStream is = new DataInputStream(client.socket.getInputStream());
+//                username=is.readUTF();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
             try {
 
-                client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("GoTo.fxml"))));
+                client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));
             } catch (IOException e) {
                 e.printStackTrace();
             }
