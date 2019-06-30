@@ -16,6 +16,9 @@ import java.util.Scanner;
 import static javafx.scene.paint.Color.rgb;
 
 public class server extends Application {
+    public static Socket socket;
+    public static  DataOutputStream dataOutputStream;
+    public static  DataInputStream dataInputStream;
     public static ArrayList<String> etelaat = new ArrayList<>();
     public static ArrayList<BufferedImage> aks = new ArrayList<>();
     static Stage stage;
@@ -27,26 +30,22 @@ public class server extends Application {
         stage = Stage;
         Parent root = FXMLLoader.load(getClass().getResource("controll.fxml"));
         Stage.setScene(new Scene(root, 600, 600));
-        Stage.setTitle("Messanger");
+        Stage.setTitle("Messanger1");
         stage.alwaysOnTopProperty();
         /***********************************************************************************************/
         Stage.show();
     }
 
-    Socket socket;
+
 
     public static void main(String[] args) throws Exception {
         ServerSocket serverSocket = new ServerSocket(9090);
-        Date date = new Date();
-        String oi = date.toString();
         String l = "";
         int counter = 0;
         int c = 0;
-        Socket socket = serverSocket.accept();
-        DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-        DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
-        Scanner scanner = new Scanner(System.in);
-
+        socket = serverSocket.accept();
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        dataInputStream = new DataInputStream(socket.getInputStream());
         launch();
     }
 }

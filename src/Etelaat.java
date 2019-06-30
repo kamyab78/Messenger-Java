@@ -29,18 +29,18 @@ public class Etelaat implements Initializable {
     Text txtemail;
     @FXML
     Text txtuser;
-    @FXML
+@FXML
     ImageView img;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnshow.setOnAction(event -> {
 
             try {
-
-                txtname.setText(Search.information.get(0));
-                txtfamily.setText(Search.information.get(1));
-                txtemail.setText(Search.information.get(2));
-                txtuser.setText(Search.information.get(3));
+                add add = new add();
+                txtname.setText(add.getPerson(Search.username).get(0));
+                txtfamily.setText(add.getPerson(Search.username).get(1));
+                txtemail.setText(add.getPerson(Search.username).get(2));
+                txtuser.setText(add.getPerson(Search.username).get(3));
 
 //                Pane pane = null;
 //                pane.getChildren().add(imageView);
@@ -55,7 +55,7 @@ public class Etelaat implements Initializable {
 
         btnback.setOnAction(event -> {
             try {
-               client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("GoTo.fxml"))));
+                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Go.fxml"))));
             } catch (IOException e) {
                 e.printStackTrace();
             }

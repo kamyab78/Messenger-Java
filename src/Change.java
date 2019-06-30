@@ -30,48 +30,48 @@ public class Change implements Initializable {
     @FXML Button btnok;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        btnback.setOnAction(event -> {
-            try {
-                client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("setting.fxml"))));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        btnphoto.setOnAction(event -> {
-            FileChooser fc = new FileChooser();
-            File selectedFile = fc.showOpenDialog(null);
-            if (selectedFile != null) {
-                String photo = selectedFile.getPath();
-                aks.add(photo);
-            }
-        });
-        btnok.setOnAction(event -> {
-            String name;
-            name = txtfname.getText();
-            etelagir.add(name);
-            String familyname;
-            familyname = txtffamily.getText();
-            etelagir.add(familyname);
-            String email;
-            email = txtfemail.getText();
-            etelagir.add(email);
-            String username;
-            username = txtfuser.getText();
-            etelagir.add(username);
-            String pass;
-            pass = txtfpass.getText();
-            etelagir.add(pass);
-            String Photo;
-            Photo = null;
-//            try {
-//                add add = new add();
-//                add.editePerson(Controller.etelagir.get(3) , name , familyname , email , username , pass , aks.get(0));
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-            txt.setText("ok");
+btnback.setOnAction(event -> {
+    try {
+        server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("setting.fxml"))));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+});
+btnphoto.setOnAction(event -> {
+    FileChooser fc = new FileChooser();
+    File selectedFile = fc.showOpenDialog(null);
+    if (selectedFile != null) {
+        String photo = selectedFile.getPath();
+        aks.add(photo);
+    }
+});
+btnok.setOnAction(event -> {
+        String name;
+        name = txtfname.getText();
+        etelagir.add(name);
+        String familyname;
+        familyname = txtffamily.getText();
+        etelagir.add(familyname);
+        String email;
+        email = txtfemail.getText();
+        etelagir.add(email);
+        String username;
+        username = txtfuser.getText();
+        etelagir.add(username);
+        String pass;
+        pass = txtfpass.getText();
+        etelagir.add(pass);
+        String Photo;
+        Photo = null;
+    try {
+        add add = new add();
+        add.editePerson(Controller.etelagir.get(3) , name , familyname , email , username , pass , aks.get(0));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+        txt.setText("ok");
 //        etela etela = new etela(name , familyname , email , username , pass , aks.get(0));
 
-        });
+});
     }
 }

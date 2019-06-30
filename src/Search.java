@@ -15,8 +15,7 @@ public class Search implements Initializable {
     public static String getUsername() {
         return username;
     }
-//String
-    public static ArrayList<String> information;
+    String user;
     public static String username;
     @FXML
     Button btnnext;
@@ -25,46 +24,49 @@ public class Search implements Initializable {
     Text txt;
     @FXML
     TextField txtfsearch;
-    @FXML Button btninfor;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            user = server.dataInputStream.readUTF();
+            add a = new add();
+            ArrayList<String > ar = new ArrayList<>();
+            ar=a.getPerson(user);
+            if (!ar.isEmpty()){
+                server.dataOutputStream.writeUTF("ok");
+//                server.dataOutputStream.writeUTF(a.getPerson(user).get(0));
+//                server.dataOutputStream.writeUTF(a.getPerson(user).get(1));
+//                server.dataOutputStream.writeUTF(a.getPerson(user).get(2));
+//                server.dataOutputStream.writeUTF(a.getPerson(user).get(3));
+//                server.dataOutputStream.writeUTF(a.getPerson(user).get(4));
+            }
+            else
+                server.dataOutputStream.writeUTF("this user not exist");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         btnsearch.setOnAction(event -> {
             username = txtfsearch.getText();
             try {
-                client.dataOutputStream.writeUTF(username);
-                txt.setText(client.dataInputStream.readUTF());
-
-//                ArrayList<String> arr = new ArrayList<>();
-//                arr = add.getPerson(username);
-//                if(!arr.isEmpty()){
-//                    txt.setText("ok");
-//                }
-//                else
-//                    txt.setText("this user not exists");
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+                add add = new add();
+                ArrayList<String> arr = new ArrayList<>();
+                arr = add.getPerson(username);
+                if(!arr.isEmpty()){
+                    txt.setText("ok");
+                }
+                else
+                    txt.setText("this user not exists");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
 
 //            txt.setText("your id is :");
-        } catch (IOException e) {
-                e.printStackTrace();
-            }});
-        btninfor.setOnAction(event -> {
-//            try {
-//                information.add(client.dataInputStream.readUTF());
-//                information.add(client.dataInputStream.readUTF());
-//                information.add(client.dataInputStream.readUTF());
-//                information.add(client.dataInputStream.readUTF());
-////                information.add(client.dataInputStream.readUTF());
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
         });
         btnnext.setOnAction(event -> {
             try {
-               client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("GoTo.fxml"))));
+                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Go.fxml"))));
             } catch (IOException e) {
                 e.printStackTrace();
             }

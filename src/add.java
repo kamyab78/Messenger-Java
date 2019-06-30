@@ -56,13 +56,16 @@ public class add {
         preparedStatement.executeUpdate();
     }
 
-    public void editePerson(String newname,String newfamilyname , String newemail , String newuser , String newpass) throws Exception{
-        preparedStatement = connection.prepareStatement("update person values (default , ?,?,?,?,?) where username=?");
+    public void editePerson(String username , String newname,String newfamilyname , String newemail , String newuser , String newpass , String newphoto) throws Exception{
+        preparedStatement = connection.prepareStatement("update person values (default , ?,?,?,?,?,?) where username=?");
+//        preparedStatement.setString(1,username);
         preparedStatement.setString(1,newname);
         preparedStatement.setString(2,newfamilyname);
         preparedStatement.setString(3,newemail);
         preparedStatement.setString(4,newuser);
         preparedStatement.setString(5,newpass);
+        preparedStatement.setString(6,newphoto);
+        preparedStatement.setString(7,username);
         preparedStatement.executeUpdate();
     }
 
