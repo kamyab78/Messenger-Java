@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Start">
+   <children>
+      <Text layoutX="100.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
+      <Text layoutX="100.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="pass" />
+      <TextField fx:id="txtfusername" layoutX="244.0" layoutY="116.0" />
+      <TextField fx:id="txtfpass" layoutX="244.0" layoutY="216.0" />
+      <Button fx:id="btnstart" layoutX="269.0" layoutY="387.0" mnemonicParsing="false" text="start" />
+      <Text fx:id="txt" layoutX="206.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="285.2734375" />
+      <Button fx:id="btngo" layoutX="453.0" layoutY="498.0" mnemonicParsing="false" text="go" />
+      <Button fx:id="btnnew" layoutX="100.0" layoutY="498.0" mnemonicParsing="false" text="create new account" />
+   </children>
+</AnchorPane>

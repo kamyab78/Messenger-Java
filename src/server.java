@@ -28,7 +28,7 @@ public class server extends Application {
         /***********************************************************************************************/
         /**sakhtan safe**/
         stage = Stage;
-        Parent root = FXMLLoader.load(getClass().getResource("controll.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
         Stage.setScene(new Scene(root, 600, 600));
         Stage.setTitle("Messanger1");
         stage.alwaysOnTopProperty();

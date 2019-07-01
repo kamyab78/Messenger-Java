@@ -6,7 +6,10 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +29,7 @@ public class ChatController implements Initializable {
     Text txtinformation;
     @FXML
     Button btninformation;
+    @FXML Button btnfile;
     @FXML
     TextArea chat;
     @FXML Button btnsetting;
@@ -114,6 +118,14 @@ public class ChatController implements Initializable {
                 server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("setting.fxml"))));
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        });
+        btnfile.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
+            File selectedFile = fc.showOpenDialog(null);
+            if (selectedFile != null) {
+String file = selectedFile.getPath();
+chat.setText(file);
             }
         });
     }

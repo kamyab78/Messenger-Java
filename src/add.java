@@ -29,6 +29,7 @@ public class add {
             infor.add(resultSet.getString("email"));
             infor.add(resultSet.getString("username"));
             infor.add(resultSet.getString("photo"));
+            infor.add(resultSet.getString("pass"));
         }
 //
         return infor;

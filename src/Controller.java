@@ -60,11 +60,6 @@ FileChooser fc = new FileChooser();
             String username;
             username = txtfUserName.getText();
             etelagir.add(username);
-//            try {
-//                server.dataOutputStream.writeUTF(etelagir.get(3));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
             String pass;
             pass = txtfPass.getText();
             etelagir.add(pass);

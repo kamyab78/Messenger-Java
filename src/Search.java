@@ -27,20 +27,20 @@ public class Search implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            user = server.dataInputStream.readUTF();
+//            user = server.dataInputStream.readUTF();
             add a = new add();
             ArrayList<String > ar = new ArrayList<>();
             ar=a.getPerson(user);
-            if (!ar.isEmpty()){
-                server.dataOutputStream.writeUTF("ok");
+//            if (!ar.isEmpty()){
+//                server.dataOutputStream.writeUTF("ok");
 //                server.dataOutputStream.writeUTF(a.getPerson(user).get(0));
 //                server.dataOutputStream.writeUTF(a.getPerson(user).get(1));
 //                server.dataOutputStream.writeUTF(a.getPerson(user).get(2));
 //                server.dataOutputStream.writeUTF(a.getPerson(user).get(3));
 //                server.dataOutputStream.writeUTF(a.getPerson(user).get(4));
-            }
-            else
-                server.dataOutputStream.writeUTF("this user not exist");
+//            }
+//            else
+//                server.dataOutputStream.writeUTF("this user not exist");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
