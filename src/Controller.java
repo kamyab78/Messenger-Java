@@ -76,18 +76,18 @@ FileChooser fc = new FileChooser();
         });
         btnGoTo.setOnAction(event -> {
             try {
-            DataInputStream is = new DataInputStream(server.socket.getInputStream());
-            String name = is.readUTF();
-            String familyname = is.readUTF();
-            String email = is.readUTF();
-            String user = is.readUTF();
-            String pass = is.readUTF();
-            String photo = is.readUTF();
-            etelaa etelaa = new etelaa(name, familyname, email, user, pass, photo);
-//
-            add add = new add();
-            add.addPerson(etelaa);
-                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));
+//            DataInputStream is = new DataInputStream(server.socket.getInputStream());
+//            String name = is.readUTF();
+//            String familyname = is.readUTF();
+//            String email = is.readUTF();
+//            String user = is.readUTF();
+//            String pass = is.readUTF();
+//            String photo = is.readUTF();
+//            etelaa etelaa = new etelaa(name, familyname, email, user, pass, photo);
+////
+//            add add = new add();
+//            add.addPerson(etelaa);
+                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("email.fxml"))));
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (Exception e) {
