@@ -29,10 +29,12 @@ public class ChatController implements Initializable {
     Text txtinformation;
     @FXML
     Button btninformation;
-    @FXML Button btnfile;
+    @FXML
+    Button btnfile;
     @FXML
     TextArea chat;
-    @FXML Button btnsetting;
+    @FXML
+    Button btnsetting;
     String txt = "";
     int counter = 0;
 
@@ -124,8 +126,13 @@ public class ChatController implements Initializable {
             FileChooser fc = new FileChooser();
             File selectedFile = fc.showOpenDialog(null);
             if (selectedFile != null) {
-String file = selectedFile.getPath();
-chat.setText(file);
+                String file = selectedFile.getPath();
+                chat.setText(file);
+                try {
+                    server.dataOutputStream.writeUTF(file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

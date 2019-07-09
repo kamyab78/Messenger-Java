@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Start implements Initializable {
+    public static String username;
     @FXML
     Text txt;
     @FXML
@@ -27,7 +28,7 @@ public class Start implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         btnstart.setOnAction(event -> {
-            String username = txtfusername.getText();
+            username = txtfusername.getText();
             String pass = txtfpass.getText();
 //            txt.setText(username);
             try {
@@ -37,7 +38,7 @@ public class Start implements Initializable {
                 if (start.isEmpty()) {
                     txt.setText("this user name not exsist");
                 }
-                if (!add.getPerson(username).get(5).equals(pass)){
+                if (!add.getPerson(username).get(5).equals(pass)) {
                     txt.setText("your pass is not valid");
                 }
                 if (add.getPerson(username).get(5).equals(pass)) {

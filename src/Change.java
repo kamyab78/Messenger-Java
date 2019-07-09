@@ -48,6 +48,8 @@ btnphoto.setOnAction(event -> {
 btnok.setOnAction(event -> {
         String name;
         name = txtfname.getText();
+
+//    System.out.println();
         etelagir.add(name);
         String familyname;
         familyname = txtffamily.getText();

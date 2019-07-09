@@ -58,7 +58,7 @@ public class add {
     }
 
     public void editePerson(String username , String newname,String newfamilyname , String newemail , String newuser , String newpass , String newphoto) throws Exception{
-        preparedStatement = connection.prepareStatement("update person values (default , ?,?,?,?,?,?) where username=?");
+        preparedStatement = connection.prepareStatement("update person set name=?,familyname=?,email=?,username=?,pass=?,photo=?,where username=?");
 //        preparedStatement.setString(1,username);
         preparedStatement.setString(1,newname);
         preparedStatement.setString(2,newfamilyname);
@@ -69,7 +69,11 @@ public class add {
         preparedStatement.setString(7,username);
         preparedStatement.executeUpdate();
     }
-
+    public void deletePerson(String username) throws Exception{
+        preparedStatement = connection.prepareStatement("delete from person where username = ?");
+        preparedStatement.setString(1, username);
+        preparedStatement.executeUpdate();
+    }
     public void close() throws Exception{
         preparedStatement.close();
         connection.close();

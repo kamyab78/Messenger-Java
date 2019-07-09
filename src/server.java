@@ -17,12 +17,13 @@ import static javafx.scene.paint.Color.rgb;
 
 public class server extends Application {
     public static Socket socket;
-    public static  DataOutputStream dataOutputStream;
-    public static  DataInputStream dataInputStream;
+    public static DataOutputStream dataOutputStream;
+    public static DataInputStream dataInputStream;
     public static ArrayList<String> etelaat = new ArrayList<>();
     public static ArrayList<BufferedImage> aks = new ArrayList<>();
     static Stage stage;
-// static
+
+    // static
     @Override
     public void start(Stage Stage) throws Exception {
         /***********************************************************************************************/
@@ -35,7 +36,6 @@ public class server extends Application {
         /***********************************************************************************************/
         Stage.show();
     }
-
 
 
     public static void main(String[] args) throws Exception {

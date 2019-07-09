@@ -16,18 +16,20 @@ import java.util.Random;
 import java.util.ResourceBundle;
 public class Email implements Initializable {
     public static int zakhireyecode;
+    private int code;
     private int port = 465;
     private String host = "smtp.gmail.com";
     private String from = "ghassemikamyab@gmail.com";
     private String username = "ghassemikamyab@gmail.com";
     private String password = "Kamyab1378";
     private Portocol portocol = Portocol.SMTPS;
-    private int code;
+
 
     //private String cod;
     public int getCode() {
         return code;
     }
+
     public enum Portocol {
         SMTP, SMTPS, TLS
     }
@@ -88,21 +90,23 @@ public class Email implements Initializable {
     TextField txtfsubmit;
     @FXML
     Text txt;
-@FXML Button btngo;
+    @FXML
+    Button btngo;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         String c = createCode();
         sendMail(Controller.etelagir.get(2), "your code", c);
         btntest.setOnAction(event -> {
             if (c.equals(txtfsubmit.getText())) {
-                    txt.setText("ok");
-                    btngo.setOnAction(event1 -> {
-                        try {
-                            server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    });
+                txt.setText("ok");
+                btngo.setOnAction(event1 -> {
+                    try {
+                        server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
             } else
                 txt.setText("code is not valid");
         });

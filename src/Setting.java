@@ -13,6 +13,7 @@ public class Setting implements Initializable {
     @FXML Button btnchange;
     @FXML Button btnlogout;
     @FXML Button btnback;
+    @FXML Button btnpak;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
        btnchange.setOnAction(event -> {
@@ -33,6 +34,16 @@ public class Setting implements Initializable {
            try {
                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Go.fxml"))));
            } catch (IOException e) {
+               e.printStackTrace();
+           }
+       });
+       btnpak.setOnAction(event -> {
+           try {
+               add add = new add();
+               add.deletePerson(Start.username);
+               server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("start.fxml"))));
+
+           } catch (Exception e) {
                e.printStackTrace();
            }
        });

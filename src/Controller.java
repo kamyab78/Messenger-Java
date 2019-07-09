@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     public static ArrayList<String> etelagir = new ArrayList<>();
     public static ArrayList<String> aks = new ArrayList<>();
+    public  static String phone;
     @FXML
     TextField txtfUserName;
     @FXML
@@ -27,7 +28,7 @@ public class Controller implements Initializable {
     @FXML
     TextField txtfPass;
     @FXML
-    Button btnGoTo;
+    Button btnemail;
     @FXML
     TextField txtfphoto;
     @FXML
@@ -35,6 +36,9 @@ public class Controller implements Initializable {
     @FXML Button btnsubmit;
     @FXML Text txts;
     @FXML Button btnphoto;
+    @FXML Button btnsms;
+    @FXML TextField txtfphone;
+
     List<String> strings;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,6 +69,7 @@ FileChooser fc = new FileChooser();
             etelagir.add(pass);
             String Photo;
             Photo = null;
+            phone = txtfphone.getText();
             txts.setText("your submit is ok;Lets Go");
             etela etela = new etela(name , familyname , email , username , pass , aks.get(0));
             try {
@@ -74,7 +79,7 @@ FileChooser fc = new FileChooser();
                 e.printStackTrace();
             }
         });
-        btnGoTo.setOnAction(event -> {
+        btnemail.setOnAction(event -> {
             try {
 //            DataInputStream is = new DataInputStream(server.socket.getInputStream());
 //            String name = is.readUTF();
@@ -94,6 +99,13 @@ FileChooser fc = new FileChooser();
                 e.printStackTrace();
             }
             server.stage.show();
+        });
+        btnsms.setOnAction(event -> {
+            try {
+                server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("sms.fxml"))));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
     }
 }
