@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0"  style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sms">
+    <children>
+        <TextField fx:id="txtfsms" layoutX="60.0" layoutY="101.0" />
+        <Text fx:id="txt" layoutX="14.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="287.2734375" />
+        <Button fx:id="btntest" layoutX="130.0" layoutY="200.0" mnemonicParsing="false" text="test" />
+        <Button fx:id="btnnext" layoutX="196.0" layoutY="316.0" mnemonicParsing="false" text="next" />
+    </children>
+</AnchorPane>

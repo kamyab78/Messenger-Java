@@ -1,66 +1,84 @@
-import java.io.*;
-import java.net.InetAddress;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
-import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class client extends Thread {
-    OutputStream output1;
-    DataOutputStream dos;
-    DataInputStream ir;
-    InputStream input1;
-    Socket socket;
+public class client extends Application {
+    static Stage stage;
+    public static Socket socket;
+    public static DataInputStream dataInputStream;
+    public static DataOutputStream dataOutputStream;
 
-    public client() {
-        try {
-            String host = "localhost";
-            String serverAddress = "127.0.0.1";
-            int port = 9090;
-//            InetAddress ad = InetAddress.getByName(serverAddress);
-            Socket socket = new Socket(serverAddress, port);
-            Scanner scan1 = new Scanner(System.in);
-            //input1=socket.getInputStream();
-            //***********************************************************************************
-            //ferestadan payam
-            output1 = socket.getOutputStream();
-            dos = new DataOutputStream(output1);
-//            OutputStreamWriter ow = new OutputStreamWriter(output1);
-//            BufferedWriter bw1 = new BufferedWriter(ow);
-            String p = scan1.nextLine();
-            dos.writeBytes(p);
-   // dos.close();
-    input1.close();
-    ir.close();
-//    output1.close();
-//    socket.close();
-//            bw1.write(p);
-//            bw1.flush();
-            //****************************************************************************
-            //  gereftan payam
-            input1 = socket.getInputStream();
-            ir = new DataInputStream(input1);
-            //BufferedReader br1 = new BufferedReader(ir);
-            String m = ir.readLine();
-            System.out.println(m);
-    dos.close();
-  //  input1.close();
-  //  ir.close();
-    output1.close();
-   // socket.close();
-//            //************************************************************************
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        } finally {
-            try {
-                dos.close();
-                input1.close();
-                ir.close();
-                output1.close();
-                socket.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
+        Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
+        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setTitle("Messanger");
+        primaryStage.show();
+    }
 
+    public static void main(String[] args) throws IOException {
+
+        socket = new Socket("localhost", 9090);
+        dataInputStream = new DataInputStream(socket.getInputStream());
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        launch(args);
+        Scanner scan = new Scanner(System.in);
+        /**************************************************/
+        /**gereftan etelaat karbar**/
+//        System.out.print("enter name");
+//
+//        System.out.print("enter family name");
+//
+//        System.out.print("enter email");
+//
+//        System.out.print("enter user");
+//
+//        System.out.print("enter pass");
+//
+//            System.out.println("enter your directory of photo");
+////dataOutputStream.writeUTF(Controller.etelaat.get(5));
+//        List list = new ArrayList<>();
+        /******************************************************/
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                while (true){
+//                    try {
+//                        dataOutputStream.writeUTF(conection.z);
+////                        System.out.println(dataInputStream.readUTF());
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            }
+//        }).start();
+//
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                while (true){
+//                    try {
+//                        System.out.println(dataInputStream.readUTF());
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }).start();
+//
+//    }
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <TextField fx:id="txtfName" layoutX="195.0" layoutY="15.0" />
+      <Text fx:id="txtName" layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name " wrappingWidth="182.953125" />
+      <TextField fx:id="txtfFamilyname" layoutX="195.0" layoutY="84.0" />
+      <Button fx:id="btnemail" layoutX="493.0" layoutY="535.0" mnemonicParsing="false" text="email code" />
+      <TextField fx:id="txtfEmail" layoutX="195.0" layoutY="164.0" />
+      <TextField fx:id="txtfUserName" layoutX="195.0" layoutY="234.0" />
+      <TextField fx:id="txtfPass" layoutX="195.0" layoutY="314.0" />
+      <Text fx:id="txtFamilyName" layoutX="10.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FamilyName" wrappingWidth="146.2734375" />
+      <Text fx:id="txtEmail" layoutX="25.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="174.2734375" />
+      <Text fx:id="txtUsername" layoutX="25.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName" wrappingWidth="182.953125" />
+      <Text fx:id="txtPass" layoutX="25.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pass" />
+      <Text layoutX="26.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="photo" />
+      <Button fx:id="btnsubmit" layoutX="270.0" layoutY="535.0" mnemonicParsing="false" text="submit" />
+      <Text fx:id="txts" layoutX="184.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="298.0" />
+      <Button fx:id="btnphoto" layoutX="191.0" layoutY="390.0" mnemonicParsing="false" text="click here for select photo" />
+      <Button fx:id="btnsms" layoutX="6.0" layoutY="536.0" mnemonicParsing="false" text="sms code" />
+      <Text layoutX="14.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="phonenumber" />
+      <TextField fx:id="txtfphone" layoutX="195.0" layoutY="453.0" />
+   </children>
+</AnchorPane>

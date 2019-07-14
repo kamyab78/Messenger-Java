@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Etelaat">
+    <children>
+        <Text layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="93.015625" />
+        <Text layoutX="25.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="familyname" />
+        <Text layoutX="25.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" />
+        <Text layoutX="25.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
+        <Button fx:id="btnback" layoutX="435.0" layoutY="427.0" mnemonicParsing="false" text="back" />
+        <Text fx:id="txtname" layoutX="200.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.2734375" />
+        <Text fx:id="txtfamily" layoutX="200.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="276.2734375" />
+        <Text fx:id="txtemail" layoutX="200.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="270.2734375" />
+        <Text fx:id="txtuser" layoutX="200.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="347.2734375" />
+        <Button fx:id="btnshow" layoutX="408.0" layoutY="94.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="93.0" text="show" />
+
+        <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="188.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+    </children>
+</AnchorPane>
