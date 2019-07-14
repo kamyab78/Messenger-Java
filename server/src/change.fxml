@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Change">
+   <children>
+      <Text layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name" wrappingWidth="127.2734375" />
+      <Text layoutX="25.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="familyname" wrappingWidth="144.2734375" />
+      <Text layoutX="25.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" wrappingWidth="127.2734375" />
+      <Text layoutX="25.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
+      <Text layoutX="25.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="pass" />
+      <Text layoutX="25.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="photo" />
+      <TextField fx:id="txtfname" layoutX="200.0" layoutY="16.0" />
+      <TextField fx:id="txtffamily" layoutX="200.0" layoutY="86.0" />
+      <TextField fx:id="txtfemail" layoutX="200.0" layoutY="165.0" />
+      <TextField fx:id="txtfuser" layoutX="200.0" layoutY="245.0" />
+      <TextField fx:id="txtfpass" layoutX="200.0" layoutY="322.0" />
+      <Button fx:id="btnphoto" layoutX="200.0" layoutY="393.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="306.0" text="click for select new photo" />
+      <Button fx:id="btnok" layoutX="248.0" layoutY="516.0" mnemonicParsing="false" text="ok" />
+      <Button fx:id="btnback" layoutX="476.0" layoutY="525.0" mnemonicParsing="false" text="back" />
+      <Text fx:id="txt" layoutX="200.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="306.0" />
+   </children>
+</AnchorPane>

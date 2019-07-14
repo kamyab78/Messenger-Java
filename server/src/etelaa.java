@@ -4,13 +4,18 @@ public class etelaa {
     private String email;
     private String user;
     private String pass;
-    etelaa(String name , String familyname , String email , String user , String pass){
+    private String photo;
+
+    etelaa(String name , String familyname , String email , String user , String pass , String photo){
         this.name = name;
         this.familyname=familyname;
         this.email=email;
         this.user=user;
         this.pass=pass;
+        this.photo=photo;
     }
+    public String getPhoto() {return photo;}
+    public void setPhoto(String photo) { this.photo = photo;}
     public String getName() {
         return name;
     }

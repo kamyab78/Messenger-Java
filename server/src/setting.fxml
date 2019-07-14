@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Setting">
+   <children>
+      <Button fx:id="btnchange" layoutX="154.0" layoutY="123.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="140.0" text="change information" />
+      <Button fx:id="btnlogout" layoutX="220.0" layoutY="247.0" mnemonicParsing="false" text="log out" />
+      <Button fx:id="btnback" layoutX="482.0" layoutY="335.0" mnemonicParsing="false" text="back" />
+      <Button fx:id="btnpak" layoutX="14.0" layoutY="336.0" mnemonicParsing="false" text="Delet e account" />
+   </children>
+</AnchorPane>
