@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChatController">
+<?import javafx.scene.text.Text?>
+<AnchorPane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ChatController">
    <children>
       <TextField fx:id="txtfoutput" layoutX="110.0" layoutY="706.0" prefHeight="51.0" prefWidth="460.0" />
       <Button fx:id="btnsend" layoutX="582.0" layoutY="706.0" mnemonicParsing="false" text="send" />
+      <Button fx:id="btnsmile" layoutX="110.0" layoutY="760.0" mnemonicParsing="false" text="smile" />
+      <Button fx:id="btncry" layoutX="160.0" layoutY="760.0" mnemonicParsing="false" text="cry" />
+      <Button fx:id="btnheart" layoutX="210.0" layoutY="760.0" mnemonicParsing="false" text="heart" />
+      <Button fx:id="btnfear" layoutX="260.0" layoutY="760.0" mnemonicParsing="false" text="fear" />
+      <Button fx:id="btnangry" layoutX="310.0" layoutY="760.0" mnemonicParsing="false" text="angry" />
       <Button fx:id="btnexit" layoutX="642.0" layoutY="14.0" mnemonicParsing="false" text="X" />
       <Button fx:id="btninformation" layoutX="330" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" />
       <TextArea fx:id="chat" layoutX="100.0" layoutY="81.0" prefHeight="570.0" prefWidth="528.0" />
-      <Button fx:id="btnsetting" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="setting" />
-      <Button fx:id="btnfile" layoutX="39.0" layoutY="706.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="71.0" text="file" />
+      <Button fx:id="btnsetting" layoutX="25.0" layoutY="50.0" mnemonicParsing="false" text="setting" />
+      <Button fx:id="btnpm" layoutX="35.0" layoutY="550.0" mnemonicParsing="false" text="show pm" />
+      <Button fx:id="btnfile" layoutX="582.0" layoutY="740.0" mnemonicParsing="false" text="file" />
+      <Text layoutX="635.0" layoutY="90.0" onMouseClicked="#mouse1" strokeType="OUTSIDE" strokeWidth="0.0" text="my file" wrappingWidth="105.0000139772892" />
+      <Text fx:id="txt1" layoutX="635.0" layoutY="110.0" onMouseClicked="#mouse1" strokeType="OUTSIDE" strokeWidth="0.0" text="file" wrappingWidth="105.0000139772892" />
+      <Text fx:id="txt2" layoutX="635.0" layoutY="160.0" onMouseClicked="#mouse2" strokeType="OUTSIDE" strokeWidth="0.0" text="file" wrappingWidth="105.0000139772892" />
+      <Text fx:id="txt3" layoutX="635.0" layoutY="210.0" onMouseClicked="#mouse3" strokeType="OUTSIDE" strokeWidth="0.0" text="file" wrappingWidth="105.0000139772892" />
+      <Text fx:id="txt4" layoutX="635.0" layoutY="260.0" onMouseClicked="#mouse4" strokeType="OUTSIDE" strokeWidth="0.0" text="file" wrappingWidth="105.0000139772892" />
+      <Text fx:id="txt5" layoutX="635.0" layoutY="310.0" onMouseClicked="#mouse5" strokeType="OUTSIDE" strokeWidth="0.0" text="file" wrappingWidth="105.0000139772892" />
+      <Text fx:id="txt6" layoutX="635.0" layoutY="360.0" onMouseClicked="#mouse6" strokeType="OUTSIDE" strokeWidth="0.0" text="file" wrappingWidth="105.0000139772892" />
+      <Text layoutX="6.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="other file" />
+      <Text layoutX="25.0" layoutY="110.0" onMouseClicked="#mouses1" strokeType="OUTSIDE" strokeWidth="0.0" text="file" />
+      <Text layoutX="25.0" layoutY="160.0" onMouseClicked="#mouses2" strokeType="OUTSIDE" strokeWidth="0.0" text="file" />
+      <Text layoutX="25.0" layoutY="210.0" onMouseClicked="#mouses3" strokeType="OUTSIDE" strokeWidth="0.0" text="file" />
+      <Text layoutX="25.0" layoutY="260.0" onMouseClicked="#mouses4" strokeType="OUTSIDE" strokeWidth="0.0" text="file" />
+      <Text layoutX="25.0" layoutY="310.0" onMouseClicked="#mouses5" strokeType="OUTSIDE" strokeWidth="0.0" text="file" />
+      <Text fx:id="txttype" layoutX="486.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="73.00000154227018" />
+      <Text layoutX="25.0" layoutY="360.0" onMouseClicked="#mouses6" strokeType="OUTSIDE" strokeWidth="0.0" text="file" />
    </children>
 </AnchorPane>

@@ -24,7 +24,7 @@ public class Start implements Initializable {
     Button btnstart;
     @FXML
     TextField txtfpass;
-
+String loginshode;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        new Thread(()->{
@@ -63,6 +63,8 @@ public class Start implements Initializable {
                 }
                 if (add.getPerson(username).get(5).equals(pass)) {
                     txt.setText("welcome");
+//                   loginshode= client.dataInputStream.readUTF();
+//                   client.dataOutputStream.writeUTF(username);
                     btngo.setOnAction(event1 -> {
                         try {
                             client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));

@@ -25,6 +25,7 @@ public class Search implements Initializable {
     Text txt;
     @FXML
     TextField txtfsearch;
+    @FXML Button btnchat;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -67,8 +68,16 @@ public class Search implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        btnchat.setOnAction(event -> {
+            try {
+                client.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("history.fxml"))));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         btnsearch.setOnAction(event -> {
             username = txtfsearch.getText();
+//            client.
             try {
                 add add = new add();
                 ArrayList<String> arr = new ArrayList<>();
