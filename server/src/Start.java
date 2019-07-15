@@ -24,7 +24,7 @@ public class Start implements Initializable {
     Button btnstart;
     @FXML
     TextField txtfpass;
-
+String loginshode;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        new Thread(()->{
@@ -58,11 +58,13 @@ public class Start implements Initializable {
                 if (start.isEmpty()) {
                     txt.setText("this user name not exsist");
                 }
-                if (!add.getPerson(username).get(5).equals(pass)) {
+                if (!amniat.decrypt(add.getPerson(username).get(5)).equals((pass))) {
                     txt.setText("your pass is not valid");
                 }
-                if (add.getPerson(username).get(5).equals(pass)) {
+                if (amniat.decrypt(add.getPerson(username).get(5)).equals(pass)) {
                     txt.setText("welcome");
+//                    server.dataOutputStream.writeUTF(username);
+//                    loginshode=server.dataInputStream.readUTF();
                     btngo.setOnAction(event1 -> {
                         try {
                             server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));

@@ -66,6 +66,7 @@ FileChooser fc = new FileChooser();
             etelagir.add(username);
             String pass;
             pass = txtfPass.getText();
+            pass=amniat.encrypt(pass);
             etelagir.add(pass);
             String Photo;
             Photo = null;
