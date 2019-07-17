@@ -8,6 +8,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -16,7 +17,7 @@ public class Search implements Initializable {
         return username;
     }
     String user;
-
+//public  static String useron;
     public static String username;
     public static ArrayList<String>clientinfor=new ArrayList<>();
     @FXML
@@ -49,6 +50,14 @@ public class Search implements Initializable {
         btnsearch.setOnAction(event -> {
             username = txtfsearch.getText();
             try {
+                hamzamani hamzamani=new hamzamani();
+                hamzamani.change4(username);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
                 add add = new add();
                 ArrayList<String> arr = new ArrayList<>();
                 arr = add.getPerson(username);
@@ -56,7 +65,16 @@ public class Search implements Initializable {
                     txt.setText("ok");
                     btnnext.setOnAction(event1 -> {
                         try {
+//                            new Thread(()->{
+//                                try {
+//                                    useron= server.dataInputStream.readUTF();
+//                                } catch (IOException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }).start();
+//                            server.dataOutputStream.writeUTF(username);
                             server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Go.fxml"))));
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

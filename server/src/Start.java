@@ -7,11 +7,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class Start implements Initializable {
     public static String username;
+    public static String useron;
     @FXML
     Text txt;
     @FXML
@@ -50,6 +54,14 @@ String loginshode;
         btnstart.setOnAction(event -> {
             username = txtfusername.getText();
             String pass = txtfpass.getText();
+            try {
+                hamzamani hamzamani=new hamzamani();
+                hamzamani.change3(username);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 //            txt.setText(username);
             try {
                 add add = new add();
@@ -58,17 +70,33 @@ String loginshode;
                 if (start.isEmpty()) {
                     txt.setText("this user name not exsist");
                 }
-                if (!amniat.decrypt(add.getPerson(username).get(5)).equals((pass))) {
+                final String secretKey = "khafe";
+                if (!add.getPerson(username).get(5).equals((AES.encrypt(pass,secretKey)))) {
                     txt.setText("your pass is not valid");
                 }
-                if (amniat.decrypt(add.getPerson(username).get(5)).equals(pass)) {
+                if (add.getPerson(username).get(5).equals(AES.encrypt(pass,secretKey))) {
                     txt.setText("welcome");
 //                    server.dataOutputStream.writeUTF(username);
 //                    loginshode=server.dataInputStream.readUTF();
                     btngo.setOnAction(event1 -> {
                         try {
+//                            Date date =new Date();
+//                            SimpleDateFormat format1=new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+//                            String tarikh= format1.format(date);
+//tout tout=new tout();
+//tout.addtime(username,tarikh);
+//                            new Thread(()->{
+//                                try {
+//                                    useron=server.dataInputStream.readUTF();
+//                                } catch (IOException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }).start();
                             server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("search.fxml"))));
+//                            server.dataOutputStream.writeUTF(username);
                         } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     });

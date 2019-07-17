@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class Setting implements Initializable {
@@ -23,10 +25,18 @@ public class Setting implements Initializable {
                e.printStackTrace();
            }
        });
+
        btnlogout.setOnAction(event -> {
            try {
-               server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("controll.fxml"))));
+               Date date =new Date();
+               SimpleDateFormat format1=new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+               String tarikh= format1.format(date);
+tout tout=new tout();
+tout.tarikhoutesh(Start.username,tarikh);
+               server.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("start.fxml"))));
            } catch (IOException e) {
+               e.printStackTrace();
+           } catch (Exception e) {
                e.printStackTrace();
            }
        });

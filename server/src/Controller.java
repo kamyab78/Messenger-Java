@@ -10,7 +10,9 @@ import java.io.DataInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 public class Controller implements Initializable {
@@ -66,11 +68,20 @@ FileChooser fc = new FileChooser();
             etelagir.add(username);
             String pass;
             pass = txtfPass.getText();
-            pass=amniat.encrypt(pass);
+//            pass=amniat.encrypt(pass);
             etelagir.add(pass);
             String Photo;
             Photo = null;
             phone = txtfphone.getText();
+            Date date =new Date();
+            SimpleDateFormat format1=new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+            String tarikh= format1.format(date);
+            try {
+                tout tout = new tout();
+                tout.addtime(username,tarikh);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             txts.setText("your submit is ok;Lets Go");
             etela etela = new etela(name , familyname , email , username , pass , aks.get(0));
             try {

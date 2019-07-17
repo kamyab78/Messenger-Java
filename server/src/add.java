@@ -42,7 +42,11 @@ public class add {
         preparedStatement.setString(2,etelaa.getFamilyname());
         preparedStatement.setString(3,etelaa.getEmail());
         preparedStatement.setString(4,etelaa.getUser());
-        preparedStatement.setString(5 , etelaa.getPass());
+        final String secretKey = "khafe";
+        String originalString = etelaa.getPass();
+        String encryptedString = AES.encrypt(originalString, secretKey) ;
+//        String decryptedString = AES.decrypt(encryptedString, secretKey) ;
+        preparedStatement.setString(5 ,encryptedString );
         preparedStatement.setString(6,etelaa.getPhoto());
         preparedStatement.executeUpdate();
     }
@@ -52,7 +56,10 @@ public class add {
         preparedStatement.setString(2,etela.getFamilyname());
         preparedStatement.setString(3,etela.getEmail());
         preparedStatement.setString(4,etela.getUsername());
-        preparedStatement.setString(5 , etela.getPass());
+final String secretKey = "khafe";
+String originalString=etela.getPass();
+        String encryptedString = AES.encrypt(originalString, secretKey) ;
+        preparedStatement.setString(5 , encryptedString);
         preparedStatement.setString(6,etela.getPhoto());
         preparedStatement.executeUpdate();
     }

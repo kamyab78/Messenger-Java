@@ -1,3 +1,4 @@
+import javax.xml.namespace.QName;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class Addpayam {
 //    }
 
     public ArrayList <String>getpm(String username, String girande) throws Exception {
-        preparedStatement = connection.prepareStatement("select payam from pm where (username=? AND girande=?) OR  (girande=? AND username=?)");
+        preparedStatement = connection.prepareStatement("select payam from pm where (username=? AND girande=?) OR  (girande=? AND username=?) ORDER BY tarikh asc ");
         preparedStatement.setString(1, username);
         preparedStatement.setString(2,girande);
         preparedStatement.setString(3,girande);
